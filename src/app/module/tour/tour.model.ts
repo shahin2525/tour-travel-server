@@ -4,13 +4,13 @@ import { ITour } from './tour.interface';
 const tourSchema = new Schema<ITour>({
   name: { type: String, required: true },
   durations: { type: Number, required: true },
-  averageRating: { type: Number, default: 0 },
+  averageRating: { type: Number, default: 5 },
   price: { type: Number, required: true },
   coverImage: { type: String, required: true },
-  images: { type: [String], default: [] },
+  images: { type: [String] },
   startDate: { type: Date },
   startLocation: { type: String },
-  locations: { type: [String], default: [] },
+  locations: { type: [String] },
   slug: { type: String },
 });
 
