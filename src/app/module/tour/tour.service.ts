@@ -25,10 +25,19 @@ const deleteTourFromDB = async (id: string) => {
   const result = await Tour.findByIdAndDelete(id);
   return result;
 };
+const getNextSchedule = async (id: string) => {
+  const tour = await Tour.findById(id);
+  const nextSchedule = tour?.getNextNearestDate();
+  return {
+    tour,
+    nextSchedule,
+  };
+};
 export const TourServices = {
   createTourIntoDB,
   getAllToursFromDB,
   getSingleTourFromDB,
   updateTourFromDB,
   deleteTourFromDB,
+  getNextSchedule,
 };

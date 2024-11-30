@@ -49,8 +49,29 @@ const getSingleTour: RequestHandler = async (req, res, next: NextFunction) => {
     next(error);
   }
 };
+// get next schedule
+const getNextSchedule: RequestHandler = async (
+  req,
+  res,
+  next: NextFunction,
+) => {
+  try {
+    const id = req.params.id;
+    const result = await TourServices.getNextSchedule(id);
+
+    sendResponse(res, {
+      statusCode: 500,
+      success: true,
+      message: 'get next tour schedule successfully',
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 export const TourController = {
   createTour,
   getAllTours,
   getSingleTour,
+  getNextSchedule,
 };
