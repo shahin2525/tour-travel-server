@@ -17,6 +17,40 @@ const createUser: RequestHandler = async (req, res, next: NextFunction) => {
     next(error);
   }
 };
+// get all users
+const getAllUsers: RequestHandler = async (req, res, next: NextFunction) => {
+  try {
+    const result = await UserServices.getAllUsersFromDB();
+
+    sendResponse(res, {
+      statusCode: 500,
+      success: true,
+      message: 'get all users successfully',
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// get single user
+const getSingleUser: RequestHandler = async (req, res, next: NextFunction) => {
+  try {
+    const id = req.params.id;
+    const result = await UserServices.getSingleUserFromDB(id);
+
+    sendResponse(res, {
+      statusCode: 500,
+      success: true,
+      message: 'get single user successfully',
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 export const UserController = {
   createUser,
+  getAllUsers,
+  getSingleUser,
 };

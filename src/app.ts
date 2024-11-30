@@ -17,6 +17,6 @@ app.use('/api/v1/users', UserRoutes);
 // global error handler
 app.use(globalErrorHandlers);
 // not found route
-app.use(notFoundRoute);
+// app.use(notFoundRoute);
 
 export default app;

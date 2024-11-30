@@ -20,5 +20,11 @@ const userSchema = new Schema<IUser>({
   },
 });
 
+// pre middleware
+// userSchema.pre('find', function (this, next) {
+//   this.find({ userStatus: { $ne: 'inactive' } });
+//   next();
+// });
+
 // 3. Create a Model.
 export const User = model<IUser>('User', userSchema);
